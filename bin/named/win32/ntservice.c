@@ -199,7 +199,10 @@ _CRTIMP void __cdecl __getmainargs(int *, char ***, char ***, int,
 				   _startupinfo *);
 void __cdecl _setargv(void);
 
-#ifdef _M_IX86
+#if defined(_M_IX86) && _MSC_VER < 1600
+/* FIXME: msvcr100 dropped support for _adjust_fdiv, but we should be able
+ * to use this if we're building bind with an earlier msvcrt. So we need
+ * a more exact define. */
 /* Pentium FDIV adjustment */
 extern int _adjust_fdiv;
 extern int * _imp___adjust_fdiv;
@@ -236,7 +239,7 @@ void GetArgs(int *argc, char ***argv, char ***envp)
 	__getmainargs(argc, argv, envp, _dowildcard, &startinfo);
 	__initenv = *envp;
 
-#ifdef _M_IX86
+#if defined(_M_IX86) && _MSC_VER < 1600
 	_adjust_fdiv = * _imp___adjust_fdiv;
 	_setdefaultprecision();
 #endif
