@@ -27,7 +27,7 @@ NULL=nul
 
 CPP=cl.exe
 RSC=rc.exe
-LIBXML=../../../../libxml2/win32/bin.msvc/libxml2.dll
+LIBXML=../../../../libxml2/win32/bin.msvc/libxml2.lib
 
 !IF  "$(CFG)" == "named - Win32 Release"
 _VC_MANIFEST_INC=0

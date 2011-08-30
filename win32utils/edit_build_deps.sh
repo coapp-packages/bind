@@ -15,5 +15,5 @@ for file in $(git ls-files |grep '\.mak$'); do
 
 	sed -e 's,^\(CPP_PROJ\|CPP_SWITCHES\)=,\1=/I "'${root_parent}'/libxml2/include" /I "'${root_parent}'/libiconv/include" /I "'${root_parent}'/openssl/include" ,g' -i ${file}
 
-	sed -e 's,^LIBXML=.*$,LIBXML='${root_parent}'/libxml2/win32/bin.msvc/libxml2.dll,g' -i ${file}
+	sed -e 's,^LIBXML=.*$,LIBXML='${root_parent}'/libxml2/win32/bin.msvc/libxml2.lib,g' -i ${file}
 done
