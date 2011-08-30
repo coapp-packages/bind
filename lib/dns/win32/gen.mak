@@ -120,7 +120,7 @@ CLEAN :
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
-CPP_PROJ=/nologo /ML /W3 /GX /O2 /I "./" /I "../../../" /I "../../../lib/isc/win32" /I "../../../lib/isc/win32/include" /I "../../../lib/isc/include" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "LIBISC_EXPORTS" /Fp"$(INTDIR)\gen.pch" /YX /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
+CPP_PROJ=/I "../../../../libxml2/include" /I "../../../../libiconv/include" /I "../../../../openssl/include" /nologo /ML /W3 /GX /O2 /I "./" /I "../../../" /I "../../../lib/isc/win32" /I "../../../lib/isc/win32/include" /I "../../../lib/isc/include" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "LIBISC_EXPORTS" /Fp"$(INTDIR)\gen.pch" /YX /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
 BSC32=bscmake.exe
 BSC32_FLAGS=/nologo /o"$(OUTDIR)\gen.bsc" 
 BSC32_SBRS= \
@@ -161,7 +161,7 @@ CLEAN :
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
-CPP_PROJ=/nologo /MLd /W3 /Gm /GX /ZI /Od /I "./" /I "../../../" /I "../../../lib/isc/win32" /I "../../../lib/isc/win32/include" /I "../../../lib/isc/include" /D "_DEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "LIBISC_EXPORTS" /FR"$(INTDIR)\\" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /GZ /c 
+CPP_PROJ=/I "../../../../libxml2/include" /I "../../../../libiconv/include" /I "../../../../openssl/include" /nologo /MLd /W3 /Gm /GX /ZI /Od /I "./" /I "../../../" /I "../../../lib/isc/win32" /I "../../../lib/isc/win32/include" /I "../../../lib/isc/include" /D "_DEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "LIBISC_EXPORTS" /FR"$(INTDIR)\\" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /GZ /c 
 BSC32=bscmake.exe
 BSC32_FLAGS=/nologo /o"$(OUTDIR)\gen.bsc" 
 BSC32_SBRS= \
