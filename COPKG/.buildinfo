@@ -1,0 +1,92 @@
+#product-info  {
+    product-name: "bind";
+    version: "9.8.0";
+    original-source-location: "ftp://ftp.isc.org/isc/bind9/9.8.0/bind-9.8.0.tar.gz";
+    original-source-website: "ftp://ftp.isc.org/isc/bind9/9.8.0/";
+    license: "ISC License";
+    packager: "Vincent Povirk <madewokherd@gmail.com>";
+}
+
+
+x86 {
+    compiler: vc10;
+    platform: x86;
+
+    uses:x86=@"..\libxml2";
+    uses:x86=@"..\openssl";
+    
+    targets: {
+        "Build\Release\arpaname.exe",
+        "Build\Release\bindevt.dll",
+        "Build\Release\ddns-confgen.exe",
+        "Build\Release\dig.exe",
+        "Build\Release\dnssec-dsfromkey.exe",
+        "Build\Release\dnssec-keyfromlabel.exe",
+        "Build\Release\dnssec-keygen.exe",
+        "Build\Release\dnssec-revoke.exe",
+        "Build\Release\dnssec-settime.exe",
+        "Build\Release\dnssec-signzone.exe",
+        "Build\Release\genrandom.exe",
+        "Build\Release\host.exe",
+        "Build\Release\isc-hmac-fixup.exe",
+        "Build\Release\libbind9.dll",
+        "lib\bind9\win32\Release\libbind9.lib",
+        "Build\Release\libdns.dll",
+        "lib\dns\win32\Release\libdns.lib",
+        "Build\Release\libisc.dll",
+        "lib\isc\win32\Release\libisc.lib",
+        "Build\Release\libisccc.dll",
+        "lib\isccc\win32\Release\libisccc.lib",
+        "Build\Release\libisccfg.dll",
+        "lib\isccfg\win32\Release\libisccfg.lib",
+        "Build\Release\liblwres.dll",
+        "lib\lwres\win32\Release\liblwres.lib",
+        "Build\Release\named-checkconf.exe",
+        "Build\Release\named-checkzone.exe",
+        "Build\Release\named-journalprint.exe",
+        "Build\Release\named.exe",
+        "Build\Release\nsec3hash.exe",
+        "Build\Release\nslookup.exe",
+        "Build\Release\nsupdate.exe",
+        "Build\Release\pkcs11-destroy.exe",
+        "Build\Release\pkcs11-keygen.exe",
+        "Build\Release\pkcs11-list.exe",
+        "Build\Release\rndc-confgen.exe",
+        "Build\Release\rndc.exe",
+    };
+    
+    build-command:@"
+        cd win32utils
+        CoappBuild.cmd
+    ";
+    
+    clean-command:@"
+        if exist Build rmdir /s /q Build > nul 2> nul
+        if exist bin\check\win32\Release rmdir /s /q bin\check\win32\Release > nul 2> nul
+        if exist bin\confgen\win32\Release rmdir /s /q bin\confgen\win32\Release > nul 2> nul
+        if exist bin\dig\win32\Release rmdir /s /q bin\dig\win32\Release > nul 2> nul
+        if exist bin\dnssec\win32\Release rmdir /s /q bin\dnssec\win32\Release > nul 2> nul
+        if exist bin\named\win32\Release rmdir /s /q bin\named\win32\Release > nul 2> nul
+        if exist bin\nsupdate\win32\Release rmdir /s /q bin\nsupdate\win32\Release > nul 2> nul
+        if exist bin\pkcs11\win32\Release rmdir /s /q bin\pkcs11\win32\Release > nul 2> nul
+        if exist bin\rndc\win32\Release rmdir /s /q bin\rndc\win32\Release > nul 2> nul
+        if exist bin\tools\win32\Release rmdir /s /q bin\tools\win32\Release > nul 2> nul
+        erase config.h > nul 2> nul
+        if exist lib\bind9\win32\Release rmdir /s /q lib\bind9\win32\Release > nul 2> nul
+        erase lib\dns\code.h > nul 2> nul
+        erase lib\dns\gen.exe > nul 2> nul
+        erase lib\dns\include\dns\enumclass.h > nul 2> nul
+        erase lib\dns\include\dns\enumtype.h > nul 2> nul
+        erase lib\dns\include\dns\rdatastruct.h > nul 2> nul
+        if exist lib\dns\win32\Release rmdir /s /q lib\dns\win32\Release > nul 2> nul
+        if exist lib\isc\win32\Release rmdir /s /q lib\isc\win32\Release > nul 2> nul
+        if exist lib\isccc\win32\Release rmdir /s /q lib\isccc\win32\Release > nul 2> nul
+        if exist lib\isccfg\win32\Release rmdir /s /q lib\isccfg\win32\Release > nul 2> nul
+        if exist lib\lwres\win32\Release rmdir /s /q lib\lwres\win32\Release > nul 2> nul
+        erase lib\win32\bindevt\MSG0*.bin > nul 2> nul
+        if exist lib\win32\bindevt\Release rmdir /s /q lib\win32\bindevt\Release > nul 2> nul
+        erase lib\win32\bindevt\bindevt.h > nul 2> nul
+        erase lib\win32\bindevt\bindevt.rc > nul 2> nul
+        erase versions.h > nul 2> nul
+    ";
+};
