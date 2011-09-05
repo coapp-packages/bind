@@ -14,6 +14,7 @@ x86 {
 
     uses:x86=@"..\libxml2";
     uses:x86=@"..\openssl";
+    // uses: @"..\perl"; // perl must be in ..\perl or in the PATH
     
     targets: {
         "Build\Release\arpaname.exe",
@@ -56,6 +57,7 @@ x86 {
     };
     
     build-command:@"
+        if EXIST ..\perl set PATH=%CD%\..\perl;%PATH%
         cd win32utils
         CoappBuild.cmd
     ";
